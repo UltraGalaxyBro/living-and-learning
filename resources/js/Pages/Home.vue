@@ -1,11 +1,14 @@
 <script setup>
-import demo from '../Layouts/demo.vue';
-defineOptions({
-    layout: demo
-});
+//Caso eu quisesse chamar um layout específico, sobrepondo o que eu defini no meu arquivo principal padrão no javascript (app.js)
+//import demo from '../Layouts/demo.vue';
+//defineOptions({
+//layout: demo
+//});
 </script>
 
 <template>
+
+    <Head title="| Home" />
     <h1>
         Hello, Universe!
     </h1>

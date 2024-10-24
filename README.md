@@ -28,4 +28,12 @@ Este projeto foi criado com o objetivo de aprender e entender o funcionamento do
 
 Certifique-se de ter o PHP, Composer, Node.js e npm instalados na sua máquina. Eu utilizei o Laravel Herd para facilitar ter o ecossistema necessário rapidamente.
 
+## Passo 1
+
+Clone o projeto utilizando o terminal de sua IDE.
+
+```bash
+git clone https://github.com/UltraGalaxyBro/living-and-learning
+cd living-and-learning
+
 
