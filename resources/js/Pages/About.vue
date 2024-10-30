@@ -6,8 +6,9 @@ defineProps({
 </script>
 
 <template>
-    <Head title="| About" />
-        <h1>
-            Página About {{ user }}
-        </h1>
+
+    <Head :title="`| ${$page.component}`" />
+    <h1>
+        Página About {{ user }}
+    </h1>
 </template>
