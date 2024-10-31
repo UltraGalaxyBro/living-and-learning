@@ -1,8 +1,21 @@
 <script setup>
+import { ref, watch } from 'vue';
 import PaginationLinks from './Components/PaginationLinks.vue';
-defineProps({
-    users: Object
-})
+import { router } from '@inertiajs/vue3';
+import { debounce } from 'lodash';
+const props = defineProps({
+    users: Object,
+    searchTerm: String
+});
+
+const search = ref(props.searchTerm);
+
+watch(
+    search,
+    debounce((q) => {
+        router.get("/dashboard", { search: q }, { preserveState: true });
+    }, 500)
+);
 
 const getDate = (date) =>
     new Date(date).toLocaleDateString("pt-br", {
@@ -14,10 +27,16 @@ const getDate = (date) =>
 <template>
     <div>
         <h1 class="title">Área do administrador</h1>
-        <h6>Bem-vindo(a), <strong>{{ $page.props.auth.user.name }}</strong>.</h6>
+        <h6>Usuário(a) <strong>{{ $page.props.auth.user.name }}</strong>, bem-vindo(a)!</h6>
     </div>
 
     <div class="container mx-auto p-4">
+        <div class="flex justify-end mb-4">
+            <div class="w-1/4">
+                <input type="search" placeholder="Pesquisar..." id="" v-model="search" />
+            </div>
+
+        </div>
         <div class="overflow-x-auto">
             <table class="table-auto min-w-full bg-white shadow-md rounded-lg overflow-hidden">
                 <thead>
@@ -51,7 +70,7 @@ const getDate = (date) =>
             </table>
         </div>
         <div>
-           <PaginationLinks :paginator="users" />
+            <PaginationLinks :paginator="users" />
         </div>
     </div>
 

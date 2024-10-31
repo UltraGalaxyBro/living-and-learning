@@ -2,11 +2,22 @@
 
 use App\Http\Controllers\AuthController;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'Home')->name('home');
 Route::middleware('auth')->group(function () {
-    Route::inertia('/dashboard', 'Dashboard', ['users' => User::select(['avatar', 'name', 'email', 'created_at'])->paginate(10)])->name('dashboard');
+    Route::get('/dashboard', function (Request $request) {
+        return inertia('Dashboard', [
+            'users' => User::when($request->search, function($query) use ($request) {
+                $query
+                ->where('name', 'like', '%'.$request->search.'%')
+                ->orWhere('email', 'like', '%'.$request->search.'%');
+            })->paginate(10)->withQueryString(),
+
+            'searchTerm' => $request->search
+        ]);
+    })->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
