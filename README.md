@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto foi criado com o objetivo de aprender e entender o funcionamento do **Laravel**, **Vue** e **Inertia** trabalhando juntos. A ideia é explorar como essas tecnologias podem ser integradas sem o uso de um starter kit, permitindo um aprendizado mais profundo e uma melhor compreensão de como cada componente funciona.
+Este projeto, que apresenta a funcionalidade de login, foi criado com o objetivo de aprender e entender o funcionamento do **Laravel**, **Vue** e **Inertia** trabalhando juntos. A ideia é explorar como essas tecnologias podem ser integradas sem o uso de um starter kit, permitindo um aprendizado mais profundo e uma melhor compreensão de como cada componente funciona.
 
 ## Tecnologias Utilizadas
 
