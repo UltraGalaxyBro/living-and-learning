@@ -5,7 +5,8 @@ import { router } from '@inertiajs/vue3';
 import { debounce } from 'lodash';
 const props = defineProps({
     users: Object,
-    searchTerm: String
+    searchTerm: String,
+    can: Object
 });
 
 const search = ref(props.searchTerm);
@@ -60,9 +61,11 @@ const getDate = (date) =>
                         <td class="py-4 px-4 font-semibold text-gray-700">{{ user.name }}</td>
                         <td class="py-4 px-4 text-gray-600">{{ user.email }}</td>
                         <td class="py-4 px-4 text-gray-600">{{ getDate(user.created_at) }}</td>
-                        <td class="py-4 px-4">
+                        <td class="py-4 px-4 space-x-1">
                             <button
                                 class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Editar</button>
+                                <button v-if="can.delete_user"
+                                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Deletar</button>
                         </td>
                     </tr>
                     <!-- Repita essa linha para outros usuários -->
